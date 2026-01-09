@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "es6", // version JS générée
+    "module": "commonjs", // pour Node.js
+    "moduleResolution": "node", // résout correctement les imports
+    "outDir": "dist", // dossier JS compilé
+    "rootDir": "src", // dossier source TS
+    "strict": true, // règles strictes TypeScript
+    "esModuleInterop": true, // compatibilité import/export
+    "forceConsistentCasingInFileNames": true,
+    "types": ["node"] // important pour que TS connaisse 'process'
+  },
+  "include": ["src/**/*"], // tous les fichiers TS à compiler
+  "exclude": ["node_modules"] // ne compile pas node_modules
+}

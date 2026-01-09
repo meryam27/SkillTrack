@@ -1,0 +1,15 @@
+import mongoose from "mongoose";
+
+const MONGODB_URI = process.env.MONGODB_URI!;
+
+const connectDB = async () => {
+  try {
+    await mongoose.connect(MONGODB_URI);
+    console.log(" MongoDB Atlas connecté");
+  } catch (error) {
+    console.error(" Erreur connexion MongoDB", error);
+    process.exit(1);
+  }
+};
+
+export default connectDB;
