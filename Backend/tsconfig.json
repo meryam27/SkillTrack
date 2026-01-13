@@ -1,15 +1,40 @@
 {
   "compilerOptions": {
-    "target": "es6", // version JS générée
-    "module": "commonjs", // pour Node.js
-    "moduleResolution": "node", // résout correctement les imports
-    "outDir": "dist", // dossier JS compilé
-    "rootDir": "src", // dossier source TS
-    "strict": true, // règles strictes TypeScript
-    "esModuleInterop": true, // compatibilité import/export
+    "typeRoots": ["./node_modules/@types", "./src/types"],
+    "target": "es6",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "outDir": "dist",
+    "rootDir": "src",
+    "strict": true,
+    "noImplicitAny": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
     "forceConsistentCasingInFileNames": true,
-    "types": ["node"] // important pour que TS connaisse 'process'
+    "skipLibCheck": true, // ← Ajoutez cette ligne
+    "types": ["node", "express"] // ← Ajoutez "express" ici
   },
-  "include": ["src/**/*"], // tous les fichiers TS à compiler
-  "exclude": ["node_modules"] // ne compile pas node_modules
+  "include": [
+    "src/**/*.ts",
+    "src/types/**/*.d.ts", // ← Inclure explicitement les fichiers .d.ts
+    "src/models/Profile.js",
+    "src/models/Activity.js",
+    "src/models/Skill.js",
+    "src/models/User.js",
+    "src/app.js",
+    "src/services/user.service.js",
+    "src/services/skill.service.js",
+    "src/services/recommandation.service.js",
+    "src/services/notification.service.js",
+    "src/services/learning.service.js",
+    "src/services/auth.service.js",
+    "src/services/analytics.service.js",
+    "src/services/activity.service.js",
+    "src/models/UserSkill.js",
+    "src/config/database.js",
+    "src/controllers/auth.controller.js",
+    "src/middlewares/roles.middleware.js",
+    "src/middlewares/auth.middleware.js"
+  ],
+  "exclude": ["node_modules", "dist"]
 }
