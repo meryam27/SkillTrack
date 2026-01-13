@@ -35,6 +35,6 @@
     "src/controllers/auth.controller.js",
     "src/middlewares/roles.middleware.js",
     "src/middlewares/auth.middleware.js"
-  ],
+, "src/models/Achievement.js", "src/models/Goal.js", "src/routes/dashboard.js"  ],
   "exclude": ["node_modules", "dist"]
 }

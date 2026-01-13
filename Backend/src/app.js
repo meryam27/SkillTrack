@@ -1,33 +1,26 @@
-import express from "express";
-import cors from "cors";
+// src/app.js
 import dotenv from "dotenv";
-
-// Charger les variables d'environnement
 dotenv.config();
 
+import express from "express";
+import cors from "cors";
+
+import connectDB from "./config/database.js";
+import dashboardRoutes from "./routes/dashboard.js";
+
 const app = express();
+const PORT = process.env.PORT || 5000;
 
-// Middleware de base
-app.use(cors());
+// Middlewares
+app.use(cors({ origin: "http://localhost:3000" }));
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 
-// Route de test de base
-app.get("/", (req, res) => {
-  res.json({
-    message: "API Backend fonctionnelle",
-    timestamp: new Date().toISOString(),
-    database: "MongoDB",
-    status: "operational",
-  });
+// Database
+connectDB();
+
+// Routes
+app.use("/api/dashboard", dashboardRoutes);
+
+app.listen(PORT, () => {
+  console.log(`🚀 Serveur démarré sur http://localhost:${PORT}`);
 });
-
-// Route de santé
-app.get("/health", (req, res) => {
-  res.status(200).json({
-    status: "healthy",
-    timestamp: new Date().toISOString(),
-  });
-});
-
-export default app;

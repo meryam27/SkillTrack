@@ -1,4 +1,5 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
+
 const { Schema } = mongoose;
 
 const skillSchema = new Schema(
@@ -55,6 +56,5 @@ const skillSchema = new Schema(
 
 skillSchema.index({ name: 1 });
 skillSchema.index({ category: 1 });
-skillSchema.index({ "market_demand.trending": 1 });
 
-module.exports = mongoose.model("Skill", skillSchema);
+export const Skill = mongoose.model("Skill", skillSchema);

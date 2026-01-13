@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 const { Schema } = mongoose;
 
 const professionalExperienceSchema = new Schema(
@@ -74,4 +74,4 @@ const profileSchema = new Schema(
 profileSchema.index({ user_id: 1 });
 profileSchema.index({ target_job_title: 1 });
 
-module.exports = mongoose.model("Profile", profileSchema);
+export const Profile = mongoose.model("Profile", profileSchema);
